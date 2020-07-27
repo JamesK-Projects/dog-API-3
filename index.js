@@ -3,7 +3,12 @@ function getDogImage(){
     let url = `https://dog.ceo/api/breed/${inputBreed}/images/random`;
     const options = {method: 'GET'};
     fetch(url, options)
-        .then(response => response.json())
+        .then(response => {
+               if(!response.ok){
+                   throw new Error()
+                 }
+              return response.json()
+              })
         .then(responseJson => displayResults(responseJson))
         .catch(error => alert("Breed not found. Please input another breed."));
 };
