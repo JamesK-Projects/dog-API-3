@@ -5,10 +5,11 @@ function getDogImage(){
     fetch(url, options)
         .then(response => {
                if(!response.ok){
-                   throw new Error()
-                 }
-              return response.json()
-              })
+                  console.log(response)
+                  throw new Error()
+                }
+                return response.json()
+                })
         .then(responseJson => displayResults(responseJson))
         .catch(error => alert("Breed not found. Please input another breed."));
 };
